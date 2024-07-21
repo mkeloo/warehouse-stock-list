@@ -40,6 +40,8 @@ const List = () => {
     const pageWidth = doc.internal.pageSize.getWidth();
     const pageHeight = doc.internal.pageSize.getHeight();
     const margin = 20;
+    const topMargin = 30;
+    const bottomMargin = 30;
     const columnWidth = (pageWidth - 2 * margin) / 4; // Adjusted for 4 columns
 
     // Add title at the top
@@ -47,76 +49,102 @@ const List = () => {
     doc.text('Stock List', pageWidth / 2, margin, { align: 'center' });
 
     const addCompanyToPage = (company, xPosition, yPosition) => {
-      let rows = [
-        [
-          {
-            content: company.companyName,
-            styles: { fontStyle: 'bold', fillColor: [200, 220, 210] },
-          },
-        ],
-      ];
+      let hasValidItems = false;
+      let initialYPosition = yPosition;
 
       company.items.forEach((item) => {
         if (typeof item === 'string') {
           const quantity = quantities[company.companyName]?.[item];
           if (quantity > 0) {
-            rows.push([`${item} - Qty: ${quantity}`]);
+            if (!hasValidItems) {
+              doc.setFontSize(12);
+              doc.setFont('helvetica', 'bold');
+              doc.text(company.companyName, xPosition, yPosition);
+              yPosition += 14;
+              hasValidItems = true;
+              doc.setFont('helvetica', 'normal');
+            }
+            doc.setFontSize(10);
+            doc.text(`${item} - `, xPosition, yPosition);
+            doc.setFont('helvetica', 'bold');
+            doc.text(
+              `${quantity}`,
+              xPosition + doc.getTextWidth(`${item} - `),
+              yPosition
+            );
+            yPosition += 14; // Increased line height between items
+            doc.setFont('helvetica', 'normal');
           }
         } else {
-          const itemRows = item.list
-            .filter(
-              (subItem) =>
-                quantities[company.companyName]?.[`${item.type}_${subItem}`] > 0
-            )
-            .map((subItem) => [
-              `${subItem} - Qty: ${
-                quantities[company.companyName][`${item.type}_${subItem}`]
-              }`,
-            ]);
+          const filteredItems = item.list.filter(
+            (subItem) =>
+              quantities[company.companyName]?.[`${item.type}_${subItem}`] > 0
+          );
 
-          if (itemRows.length > 0) {
-            rows.push([{ content: item.type, styles: { fontStyle: 'bold' } }]);
-            rows = rows.concat(itemRows);
+          if (filteredItems.length > 0) {
+            if (!hasValidItems) {
+              doc.setFontSize(12);
+              doc.setFont('helvetica', 'bold');
+              doc.text(company.companyName, xPosition, yPosition);
+              yPosition += 14;
+              hasValidItems = true;
+              doc.setFont('helvetica', 'normal');
+            }
+            yPosition += 6; // Add space above the type
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(10);
+            doc.text(item.type, xPosition, yPosition);
+            yPosition += 14; // Increased line height between items
+            doc.setFont('helvetica', 'normal');
+
+            filteredItems.forEach((subItem) => {
+              const quantity =
+                quantities[company.companyName][`${item.type}_${subItem}`];
+              doc.text(`${subItem} - `, xPosition, yPosition);
+              doc.setFont('helvetica', 'bold');
+              doc.text(
+                `${quantity}`,
+                xPosition + doc.getTextWidth(`${subItem} - `),
+                yPosition
+              );
+              yPosition += 14; // Increased line height between items
+              doc.setFont('helvetica', 'normal');
+            });
           }
         }
       });
 
-      if (rows.length > 1) {
-        // Ensure there's content to add
-        doc.autoTable({
-          startY: yPosition,
-          margin: { left: xPosition },
-          body: rows,
-          tableWidth: columnWidth - 5,
-          styles: { fontSize: 10, cellPadding: 2 }, // Increased font size
-          headStyles: { fillColor: [200, 220, 210] },
-          columnStyles: {
-            0: { cellWidth: 'auto' },
-          },
-        });
+      if (hasValidItems) {
+        yPosition += 10; // Add gap after the last item of each company
+      } else {
+        // If no valid items, reset yPosition to initial to skip this company
+        yPosition = initialYPosition;
       }
+
+      return yPosition;
     };
 
-    let yPosition = margin + 30; // Adjusted for title
+    let yPosition = margin + topMargin; // Adjusted for title
     let columnCounter = 0;
+    let xPosition = margin;
 
-    filteredStock.forEach((company, index) => {
-      const xPosition = margin + columnCounter * columnWidth;
+    filteredStock.forEach((company) => {
+      let newYPosition = addCompanyToPage(company, xPosition, yPosition);
 
-      addCompanyToPage(company, xPosition, yPosition);
+      if (newYPosition !== yPosition) {
+        yPosition = newYPosition;
 
-      if (doc.lastAutoTable.finalY > yPosition) {
-        yPosition = doc.lastAutoTable.finalY + 10;
-      }
-
-      columnCounter++;
-      if (columnCounter === 4) {
-        // Move to the next row
-        columnCounter = 0;
-        yPosition = doc.lastAutoTable.finalY + 10;
-        if (yPosition + 10 > pageHeight - margin) {
-          doc.addPage();
-          yPosition = margin + 30; // Adjusted for title
+        if (yPosition + bottomMargin > pageHeight - margin) {
+          columnCounter++;
+          if (columnCounter === 4) {
+            // Move to the next page
+            doc.addPage();
+            columnCounter = 0;
+            xPosition = margin;
+          } else {
+            xPosition = margin + columnCounter * columnWidth;
+          }
+          yPosition = margin + topMargin; // Reset yPosition for new column or new page
         }
       }
     });
@@ -126,7 +154,7 @@ const List = () => {
     doc.text(
       `Generated on: ${currentDate}`,
       pageWidth - margin,
-      pageHeight - 10,
+      pageHeight - bottomMargin,
       { align: 'right' }
     );
 
