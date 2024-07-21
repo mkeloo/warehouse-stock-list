@@ -1,0 +1,381 @@
+{
+  "STOCK": [
+    {
+      "companyName": "NEWPORT",
+      "items": [
+        "SHORT SOFT",
+        "SHORT BX",
+        "100 SOFT",
+        "100 BX",
+        "MEN GLD SHT BX",
+        "MEN GLD 100 BX",
+        "SMOOTH SHT",
+        "SMOOTH 100",
+        "RED SHT BX",
+        "RED 100 BX",
+        "GOLD SHT BX",
+        "GOLD 100 BX",
+        "PLATINUM SHT",
+        "PLATINUM 100"
+      ]
+    },
+    {
+      "companyName": "KOOL",
+      "items": ["SHT SOFT", "SHT BX", "100 BX", "MILD SHT BX", "MILD 100 BX"]
+    },
+    {
+      "companyName": "SALEM",
+      "items": ["SHT BX", "100 BX", "GOLD SHT BX", "GOLD 100 BX"]
+    },
+    {
+      "companyName": "MARLBORO",
+      "items": [
+        "RED SHT BX",
+        "RED 100 BX",
+        "GOLD SHT BX",
+        "GOLD 100 BX",
+        "SILVER SHT BX",
+        "SILVER 100 BX",
+        "MENTOL SHT BX",
+        "MEN 100 BX",
+        "MEN GLD SHT BX",
+        "MEN GLD 100 BX",
+        "MEN SIL SHT BX",
+        "NXT",
+        "SOUTHERN BLD",
+        "BLEND NO.27",
+        "SMOOTH SHT BX",
+        "SMOOTH 100 BX",
+        "SPL SEL SHT BX",
+        "SPL SEL 100 BX",
+        "SP SE GD SHT BX",
+        "SP SE GD 100 BX",
+        "BLK RED SHT BX",
+        "BLK RED 100 BX",
+        "BLK MEN SHT BX",
+        "BLK MEN 100 BX",
+        "RED 72",
+        "GOLD 72",
+        "SILVER 72",
+        "MENTOL 72",
+        "MEN BLK 72"
+      ]
+    },
+    {
+      "companyName": "WINSTON",
+      "items": [
+        "RED BX",
+        "RED 100",
+        "GOLD SHT BX",
+        "GOLD 100 BX",
+        "BLK SHT BX",
+        "BLK 100 BX"
+      ]
+    },
+    {
+      "companyName": "CAMEL",
+      "items": [
+        "FILTER SHT BX",
+        "FILTER 99 BX",
+        "BLUE SHT BX",
+        "BLUE 99 BX",
+        "CRUSH BX",
+        "CRUSH MEN SIL BX",
+        "CRUSH MEN BX",
+        "CRUSH RED"
+      ]
+    },
+    {
+      "companyName": "PALLMALL",
+      "items": [
+        "RED SHT BX",
+        "RED 100 BX",
+        "BLUE SHT BX",
+        "BLUE 100 BX",
+        "MEN SHT BX",
+        "MEN 100 BX",
+        "BLK 100 BX",
+        "ORANGE 100 BX",
+        "WHITE 100 BX"
+      ]
+    },
+    {
+      "companyName": "AMERICAN SPIRIT",
+      "items": [
+        "BLUE",
+        "YELLOW",
+        "GREEN",
+        "Turquoise",
+        "ORANGE",
+        "BLACK",
+        "GOLD",
+        "SKY"
+      ]
+    },
+    {
+      "companyName": "MAVERICK",
+      "items": ["RED 100 BX", "MEN 100 BX"]
+    },
+    {
+      "companyName": "CARTON",
+      "items": ["RED"]
+    },
+    {
+      "companyName": "L & M",
+      "items": [
+        "RED SHT BX",
+        "RED 100 BX",
+        "BLUE SHT BX",
+        "BLUE 100 BX",
+        "MEN SHT BX",
+        "MEN 100 BX",
+        "MEN BLD SHT BX"
+      ]
+    },
+    {
+      "companyName": "LUCKY STRIKE",
+      "items": [
+        "ACTIVATE BLUE",
+        "ACTIVATE GREEN",
+        "GOLD SHT",
+        "GOLD 100",
+        "RED SHT",
+        "RED 100",
+        "MENTOL SILVER",
+        "MENTOL SHT",
+        "MENTOL 100"
+      ]
+    },
+    {
+      "companyName": "GRIZZLY",
+      "items": [
+        "FINECUT NAT",
+        "WINT LONG",
+        "MINT LONG",
+        "STR LONG",
+        "WINT POUCH",
+        "DARK MINT",
+        "DARK WINT"
+      ]
+    },
+    {
+      "companyName": "KAYAK",
+      "items": ["STR LONG", "FINECUT NAT", "WINT LONG", "GRAPE LONG"]
+    },
+    {
+      "companyName": "RAW",
+      "items": ["1 1/4", "KING CLASSIC", "SUPREME", "TIPS"]
+    },
+    {
+      "companyName": "VUSE",
+      "items": [
+        {
+          "type": "1 PK 1.8",
+          "list": ["MENTOL", "GOLDEN TABACCO", "RICH TABACCO"]
+        },
+        {
+          "type": "1 pk 2.4%",
+          "list": ["MENTOL", "GOLDEN TABACCO", "RICH TABACCO"]
+        },
+        {
+          "type": "1 PK 5%",
+          "list": ["MENTOL", "GOLDEN TABACCO", "RICH TABACCO"]
+        },
+        {
+          "type": "2pk 1.8%",
+          "list": ["MENTOL", "GOLDEN TABACCO", "RICH TABACCO"]
+        },
+        {
+          "type": "2pk 2.4%",
+          "list": ["MENTOL", "GOLDEN TABACCO", "RICH TABACCO"]
+        },
+        {
+          "type": "2pk 5%",
+          "list": ["MENTOL", "GOLDEN TABACCO", "RICH TABACCO"]
+        },
+        {
+          "type": "4PK 1.8%",
+          "list": ["MENTOL", "GOLDEN TABACCO", "RICH TABACCO"]
+        },
+        {
+          "type": "4PK 2.4%",
+          "list": ["MENTOL", "GOLDEN TABACCO", "RICH TABACCO"]
+        },
+        {
+          "type": "4PK 5%",
+          "list": ["MENTOL", "GOLDEN TABACCO", "RICH TABACCO"]
+        }
+      ]
+    },
+    {
+      "companyName": "SENSA",
+      "items": [
+        "BERRY FUSION",
+        "BERRY WATERME",
+        "PASS FRUIT FROS",
+        "WATERM FROS",
+        "MINT FROST",
+        "BLUEBERRY FROS"
+      ]
+    },
+    {
+      "companyName": "ZYN 3",
+      "items": [
+        "CHILL",
+        "CINNAMON",
+        "COFFEE",
+        "WINTERGREEN",
+        "SPEARMINT",
+        "SMOOTH",
+        "CITRUS",
+        "PEPPERMINT",
+        "COOLMINT",
+        "MENTOL"
+      ]
+    },
+    {
+      "companyName": "ZYN 6",
+      "items": [
+        "CHILL",
+        "CINNAMON",
+        "COFFEE",
+        "WINTERGREEN",
+        "SPEARMINT",
+        "SMOOTH",
+        "CITRUS",
+        "PEPPERMINT",
+        "COOLMINT",
+        "MENTOL"
+      ]
+    },
+
+    {
+      "companyName": "EDGEWFIELD",
+      "items": ["RED SHORT", "RED 100", "MENTOL SHT", "MENTOL 100"]
+    },
+    {
+      "companyName": "CLASSIC",
+      "items": [
+        "RED SHT BX",
+        "RED 100 BX",
+        "BLUE SHT BX",
+        "BLUE 100 BX",
+        "MEN SHT BX",
+        "MEN 100 BX",
+        "MEN GOLD 100 BX",
+        "SILVER 100 BX"
+      ]
+    },
+    {
+      "companyName": "NATIVE",
+      "items": ["MEN 100 BX", "RED 100 BX"]
+    },
+    {
+      "companyName": "SMOKING JOE",
+      "items": ["RED SHT BX", "RED 100 BX", "MEN 100 BX"]
+    },
+    {
+      "companyName": "DECADE",
+      "items": [
+        "RED BX ST",
+        "RED 100 BX",
+        "MEN SHT BX",
+        "MEN 100 BX",
+        "GOLD SHT BX",
+        "GOLD 100 BX"
+      ]
+    },
+    {
+      "companyName": "HD#",
+      "items": [
+        "RED",
+        "COGNAC",
+        "KASH",
+        "GREEN",
+        "GRAPE",
+        "HONEY",
+        "RUSSIAN CREAM",
+        "SILVER",
+        "VANILLA",
+        "DIAMOND"
+      ]
+    },
+    {
+      "companyName": "WOODS",
+      "items": [
+        "CLASSIC",
+        "SILVER",
+        "PLATINUM",
+        "DIAMOND",
+        "GOLDEN HONEY",
+        "SWEET AROMA",
+        "HONEY BERRY",
+        "COGNAC",
+        "RUSSIAN CREAM",
+        "RUM RIVER"
+      ]
+    },
+    {
+      "companyName": "CLIPPER",
+      "items": ["RED", "MENTOL", "BLUE"]
+    },
+    {
+      "companyName": "GAME",
+      "items": ["BLUE", "GREEN", "DIAMOND", "SILVER", "BLACK", "RED"]
+    },
+    {
+      "companyName": "COPENHAGN",
+      "items": ["SNUFF", "LONGCUT", "WINT LONG", "MINT LONG", "STRAIT LONG"]
+    },
+    {
+      "companyName": "OPTIMO",
+      "items": ["SILVER", "DIAMOND", "SWEET", "GREEN", "BLUE"]
+    },
+    {
+      "companyName": "PHILLIES 55 CT",
+      "items": ["ORIGINAL", "CHOCOLATE"]
+    },
+    {
+      "companyName": "PRINGLES 5 OZ",
+      "items": [
+        "ORIGINAL",
+        "SALT N VINEG",
+        "RANCH",
+        "CHEDDAR CHES",
+        "SOUR CREAM",
+        "BBQ",
+        "PIZZA",
+        "DILL PICKLE",
+        "HONEY MUSTAR",
+        "ROTI CHICHEN",
+        "ROST GARLIC",
+        "BUFFALO RANC",
+        "SCORCHIN BBQ"
+      ]
+    },
+    {
+      "companyName": "CHEEZ IT",
+      "items": ["XTRA CHEESE", "PEPPER JACK", "WHITE CHEDAR", "ORIGINAL"]
+    },
+    {
+      "companyName": "PET FOOD ITEMS",
+      "items": ["DOG FOOD BAGS", "MEOW MIX"]
+    },
+    {
+      "companyName": "HERSHEYS",
+      "items": ["POPPED SNACK", "PRETZELS DIPPED", "COOKIE CREAM"]
+    },
+    {
+      "companyName": "REESES",
+      "items": ["POPPED SNACKS", "PRETZELS DIPPED"]
+    },
+    {
+      "companyName": "PEANUT BIG",
+      "items": ["ORIGINAL", "CAJUN"]
+    },
+    {
+      "companyName": "CUPS N LIDS",
+      "items": ["32 oz cups", "32 oz lids", "16 oz cups", "16 oz lids"]
+    }
+  ]
+}
