@@ -147,7 +147,9 @@ const List = () => {
         {filteredStock.length > 0 ? (
           filteredStock.map((company, index) => (
             <div key={index} className="bg-white p-4 shadow rounded-lg mb-6">
-              <h2 className="text-2xl font-bold mb-2">{company.companyName}</h2>
+              <h2 className="text-lg md:text-2xl font-bold mb-2">
+                {company.companyName}
+              </h2>
               {company.items.map((item, idx) =>
                 typeof item === 'string' ? (
                   <div
