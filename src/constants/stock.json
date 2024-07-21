@@ -1,76 +1,54 @@
 {
   "STOCK": [
     {
-      "companyName": "NEWPORT",
-      "items": [
-        "SHORT SOFT",
-        "SHORT BX",
-        "100 SOFT",
-        "100 BX",
-        "MEN GLD SHT BX",
-        "MEN GLD 100 BX",
-        "SMOOTH SHT",
-        "SMOOTH 100",
-        "RED SHT BX",
-        "RED 100 BX",
-        "GOLD SHT BX",
-        "GOLD 100 BX",
-        "PLATINUM SHT",
-        "PLATINUM 100"
-      ]
+      "companyName": "SMOKING JOE",
+      "items": ["RED SHT BX", "RED 100 BX", "MEN 100 BX"]
+    },
+
+    {
+      "companyName": "CLIPPER",
+      "items": ["RED", "MENTOL", "BLUE"]
     },
     {
-      "companyName": "KOOL",
-      "items": ["SHT SOFT", "SHT BX", "100 BX", "MILD SHT BX", "MILD 100 BX"]
+      "companyName": "CARTON",
+      "items": ["RED"]
     },
+
+    {
+      "companyName": "EDGEWFIELD",
+      "items": ["RED SHORT", "RED 100", "MENTOL SHT", "MENTOL 100"]
+    },
+
+    {
+      "companyName": "KAYAK",
+      "items": ["STR LONG", "FINECUT NAT", "WINT LONG", "GRAPE LONG"]
+    },
+    {
+      "companyName": "RAW",
+      "items": ["1 1/4", "KING CLASSIC", "SUPREME", "TIPS"]
+    },
+    {
+      "companyName": "MAVERICK",
+      "items": ["RED 100 BX", "MEN 100 BX"]
+    },
+    {
+      "companyName": "NATIVE",
+      "items": ["MEN 100 BX", "RED 100 BX"]
+    },
+
     {
       "companyName": "SALEM",
       "items": ["SHT BX", "100 BX", "GOLD SHT BX", "GOLD 100 BX"]
     },
+
     {
-      "companyName": "MARLBORO",
-      "items": [
-        "RED SHT BX",
-        "RED 100 BX",
-        "GOLD SHT BX",
-        "GOLD 100 BX",
-        "SILVER SHT BX",
-        "SILVER 100 BX",
-        "MENTOL SHT BX",
-        "MEN 100 BX",
-        "MEN GLD SHT BX",
-        "MEN GLD 100 BX",
-        "MEN SIL SHT BX",
-        "NXT",
-        "SOUTHERN BLD",
-        "BLEND NO.27",
-        "SMOOTH SHT BX",
-        "SMOOTH 100 BX",
-        "SPL SEL SHT BX",
-        "SPL SEL 100 BX",
-        "SP SE GD SHT BX",
-        "SP SE GD 100 BX",
-        "BLK RED SHT BX",
-        "BLK RED 100 BX",
-        "BLK MEN SHT BX",
-        "BLK MEN 100 BX",
-        "RED 72",
-        "GOLD 72",
-        "SILVER 72",
-        "MENTOL 72",
-        "MEN BLK 72"
-      ]
+      "companyName": "OPTIMO",
+      "items": ["SILVER", "DIAMOND", "SWEET", "GREEN", "BLUE"]
     },
+
     {
-      "companyName": "WINSTON",
-      "items": [
-        "RED BX",
-        "RED 100",
-        "GOLD SHT BX",
-        "GOLD 100 BX",
-        "BLK SHT BX",
-        "BLK 100 BX"
-      ]
+      "companyName": "KOOL",
+      "items": ["SHT SOFT", "SHT BX", "100 BX", "MILD SHT BX", "MILD 100 BX"]
     },
     {
       "companyName": "CAMEL",
@@ -85,6 +63,27 @@
         "CRUSH RED"
       ]
     },
+
+    {
+      "companyName": "WINSTON",
+      "items": [
+        "RED BX",
+        "RED 100",
+        "GOLD SHT BX",
+        "GOLD 100 BX",
+        "BLK SHT BX",
+        "BLK 100 BX"
+      ]
+    },
+    {
+      "companyName": "GAME",
+      "items": ["BLUE", "GREEN", "DIAMOND", "SILVER", "BLACK", "RED"]
+    },
+    {
+      "companyName": "COPENHAGN",
+      "items": ["SNUFF", "LONGCUT", "WINT LONG", "MINT LONG", "STRAIT LONG"]
+    },
+
     {
       "companyName": "PALLMALL",
       "items": [
@@ -112,14 +111,7 @@
         "SKY"
       ]
     },
-    {
-      "companyName": "MAVERICK",
-      "items": ["RED 100 BX", "MEN 100 BX"]
-    },
-    {
-      "companyName": "CARTON",
-      "items": ["RED"]
-    },
+
     {
       "companyName": "L & M",
       "items": [
@@ -158,55 +150,7 @@
         "DARK WINT"
       ]
     },
-    {
-      "companyName": "KAYAK",
-      "items": ["STR LONG", "FINECUT NAT", "WINT LONG", "GRAPE LONG"]
-    },
-    {
-      "companyName": "RAW",
-      "items": ["1 1/4", "KING CLASSIC", "SUPREME", "TIPS"]
-    },
-    {
-      "companyName": "VUSE",
-      "items": [
-        {
-          "type": "1 PK 1.8",
-          "list": ["MENTOL", "GOLDEN TABACCO", "RICH TABACCO"]
-        },
-        {
-          "type": "1 pk 2.4%",
-          "list": ["MENTOL", "GOLDEN TABACCO", "RICH TABACCO"]
-        },
-        {
-          "type": "1 PK 5%",
-          "list": ["MENTOL", "GOLDEN TABACCO", "RICH TABACCO"]
-        },
-        {
-          "type": "2pk 1.8%",
-          "list": ["MENTOL", "GOLDEN TABACCO", "RICH TABACCO"]
-        },
-        {
-          "type": "2pk 2.4%",
-          "list": ["MENTOL", "GOLDEN TABACCO", "RICH TABACCO"]
-        },
-        {
-          "type": "2pk 5%",
-          "list": ["MENTOL", "GOLDEN TABACCO", "RICH TABACCO"]
-        },
-        {
-          "type": "4PK 1.8%",
-          "list": ["MENTOL", "GOLDEN TABACCO", "RICH TABACCO"]
-        },
-        {
-          "type": "4PK 2.4%",
-          "list": ["MENTOL", "GOLDEN TABACCO", "RICH TABACCO"]
-        },
-        {
-          "type": "4PK 5%",
-          "list": ["MENTOL", "GOLDEN TABACCO", "RICH TABACCO"]
-        }
-      ]
-    },
+
     {
       "companyName": "SENSA",
       "items": [
@@ -250,10 +194,6 @@
     },
 
     {
-      "companyName": "EDGEWFIELD",
-      "items": ["RED SHORT", "RED 100", "MENTOL SHT", "MENTOL 100"]
-    },
-    {
       "companyName": "CLASSIC",
       "items": [
         "RED SHT BX",
@@ -266,14 +206,7 @@
         "SILVER 100 BX"
       ]
     },
-    {
-      "companyName": "NATIVE",
-      "items": ["MEN 100 BX", "RED 100 BX"]
-    },
-    {
-      "companyName": "SMOKING JOE",
-      "items": ["RED SHT BX", "RED 100 BX", "MEN 100 BX"]
-    },
+
     {
       "companyName": "DECADE",
       "items": [
@@ -301,6 +234,25 @@
       ]
     },
     {
+      "companyName": "NEWPORT",
+      "items": [
+        "SHORT SOFT",
+        "SHORT BX",
+        "100 SOFT",
+        "100 BX",
+        "MEN GLD SHT BX",
+        "MEN GLD 100 BX",
+        "SMOOTH SHT",
+        "SMOOTH 100",
+        "RED SHT BX",
+        "RED 100 BX",
+        "GOLD SHT BX",
+        "GOLD 100 BX",
+        "PLATINUM SHT",
+        "PLATINUM 100"
+      ]
+    },
+    {
       "companyName": "WOODS",
       "items": [
         "CLASSIC",
@@ -315,21 +267,81 @@
         "RUM RIVER"
       ]
     },
+
     {
-      "companyName": "CLIPPER",
-      "items": ["RED", "MENTOL", "BLUE"]
+      "companyName": "MARLBORO",
+      "items": [
+        "RED SHT BX",
+        "RED 100 BX",
+        "GOLD SHT BX",
+        "GOLD 100 BX",
+        "SILVER SHT BX",
+        "SILVER 100 BX",
+        "MENTOL SHT BX",
+        "MEN 100 BX",
+        "MEN GLD SHT BX",
+        "MEN GLD 100 BX",
+        "MEN SIL SHT BX",
+        "NXT",
+        "SOUTHERN BLD",
+        "BLEND NO.27",
+        "SMOOTH SHT BX",
+        "SMOOTH 100 BX",
+        "SPL SEL SHT BX",
+        "SPL SEL 100 BX",
+        "SP SE GD SHT BX",
+        "SP SE GD 100 BX",
+        "BLK RED SHT BX",
+        "BLK RED 100 BX",
+        "BLK MEN SHT BX",
+        "BLK MEN 100 BX",
+        "RED 72",
+        "GOLD 72",
+        "SILVER 72",
+        "MENTOL 72",
+        "MEN BLK 72"
+      ]
     },
     {
-      "companyName": "GAME",
-      "items": ["BLUE", "GREEN", "DIAMOND", "SILVER", "BLACK", "RED"]
-    },
-    {
-      "companyName": "COPENHAGN",
-      "items": ["SNUFF", "LONGCUT", "WINT LONG", "MINT LONG", "STRAIT LONG"]
-    },
-    {
-      "companyName": "OPTIMO",
-      "items": ["SILVER", "DIAMOND", "SWEET", "GREEN", "BLUE"]
+      "companyName": "VUSE",
+      "items": [
+        {
+          "type": "1 PK 1.8",
+          "list": ["MENTOL", "GOLDEN TABACCO", "RICH TABACCO"]
+        },
+        {
+          "type": "1 pk 2.4%",
+          "list": ["MENTOL", "GOLDEN TABACCO", "RICH TABACCO"]
+        },
+        {
+          "type": "1 PK 5%",
+          "list": ["MENTOL", "GOLDEN TABACCO", "RICH TABACCO"]
+        },
+        {
+          "type": "2pk 1.8%",
+          "list": ["MENTOL", "GOLDEN TABACCO", "RICH TABACCO"]
+        },
+        {
+          "type": "2pk 2.4%",
+          "list": ["MENTOL", "GOLDEN TABACCO", "RICH TABACCO"]
+        },
+        {
+          "type": "2pk 5%",
+          "list": ["MENTOL", "GOLDEN TABACCO", "RICH TABACCO"]
+        },
+        {
+          "type": "4PK 1.8%",
+          "list": ["MENTOL", "GOLDEN TABACCO", "RICH TABACCO"]
+        },
+        {
+          "type": "4PK 2.4%",
+          "list": ["MENTOL", "GOLDEN TABACCO", "RICH TABACCO"]
+        },
+        {
+          "type": "4PK 5%",
+          "list": ["MENTOL", "GOLDEN TABACCO", "RICH TABACCO"]
+        }
+      ]
     }
   ]
 }

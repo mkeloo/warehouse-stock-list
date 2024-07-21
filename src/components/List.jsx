@@ -35,33 +35,22 @@ const List = () => {
   );
 
   const generatePDF = () => {
-    const doc = new jsPDF('l', 'pt', 'a4');
+    const doc = new jsPDF('portrait', 'pt', 'letter');
     const currentDate = new Date().toLocaleDateString().replace(/\//g, '-');
-
-    doc.setFontSize(16);
-    doc.text('Stock List', 40, 40);
-
     const pageWidth = doc.internal.pageSize.getWidth();
     const pageHeight = doc.internal.pageSize.getHeight();
-    const margin = 40;
-    const columnWidth = (pageWidth - 2 * margin) / 4;
+    const margin = 20;
+    const columnWidth = (pageWidth - 2 * margin) / 4; // Adjusted for 4 columns
 
-    filteredStock.forEach((company, index) => {
-      const col = index % 4;
-      const row = Math.floor(index / 4);
-      const xPosition = margin + col * columnWidth;
-      let yPosition = margin + row * (pageHeight / 2) + 60;
+    // Add title at the top
+    doc.setFontSize(14);
+    doc.text('Stock List', pageWidth / 2, margin, { align: 'center' });
 
-      if (row > 0 && col === 0) {
-        doc.addPage();
-        yPosition = margin + 60;
-      }
-
+    const addCompanyToPage = (company, xPosition, yPosition) => {
       let rows = [
         [
           {
             content: company.companyName,
-            colSpan: 2,
             styles: { fontStyle: 'bold', fillColor: [200, 220, 210] },
           },
         ],
@@ -69,35 +58,81 @@ const List = () => {
 
       company.items.forEach((item) => {
         if (typeof item === 'string') {
-          const quantity = quantities[company.companyName]?.[item] || 0;
-          rows.push([item, quantity]);
+          const quantity = quantities[company.companyName]?.[item];
+          if (quantity > 0) {
+            rows.push([`${item} - Qty: ${quantity}`]);
+          }
         } else {
-          rows.push([
-            { content: item.type, colSpan: 2, styles: { fontStyle: 'bold' } },
-          ]);
-          item.list.forEach((subItem) => {
-            const quantity = quantities[company.companyName]?.[subItem] || 0;
-            rows.push([subItem, quantity]);
-          });
+          const itemRows = item.list
+            .filter(
+              (subItem) =>
+                quantities[company.companyName]?.[`${item.type}_${subItem}`] > 0
+            )
+            .map((subItem) => [
+              `${subItem} - Qty: ${
+                quantities[company.companyName][`${item.type}_${subItem}`]
+              }`,
+            ]);
+
+          if (itemRows.length > 0) {
+            rows.push([{ content: item.type, styles: { fontStyle: 'bold' } }]);
+            rows = rows.concat(itemRows);
+          }
         }
       });
 
-      doc.autoTable({
-        startY: yPosition,
-        margin: { left: xPosition },
-        body: rows,
-        tableWidth: columnWidth - 10,
-        styles: { fontSize: 8, cellPadding: 2 },
-        headStyles: { fillColor: [200, 220, 210] },
-        columnStyles: {
-          0: { cellWidth: 'auto' },
-          1: { cellWidth: 30, halign: 'right' },
-        },
-      });
+      if (rows.length > 1) {
+        // Ensure there's content to add
+        doc.autoTable({
+          startY: yPosition,
+          margin: { left: xPosition },
+          body: rows,
+          tableWidth: columnWidth - 5,
+          styles: { fontSize: 10, cellPadding: 2 }, // Increased font size
+          headStyles: { fillColor: [200, 220, 210] },
+          columnStyles: {
+            0: { cellWidth: 'auto' },
+          },
+        });
+      }
+    };
+
+    let yPosition = margin + 30; // Adjusted for title
+    let columnCounter = 0;
+
+    filteredStock.forEach((company, index) => {
+      const xPosition = margin + columnCounter * columnWidth;
+
+      addCompanyToPage(company, xPosition, yPosition);
+
+      if (doc.lastAutoTable.finalY > yPosition) {
+        yPosition = doc.lastAutoTable.finalY + 10;
+      }
+
+      columnCounter++;
+      if (columnCounter === 4) {
+        // Move to the next row
+        columnCounter = 0;
+        yPosition = doc.lastAutoTable.finalY + 10;
+        if (yPosition + 10 > pageHeight - margin) {
+          doc.addPage();
+          yPosition = margin + 30; // Adjusted for title
+        }
+      }
     });
+
+    // Footer
+    doc.setFontSize(8);
+    doc.text(
+      `Generated on: ${currentDate}`,
+      pageWidth - margin,
+      pageHeight - 10,
+      { align: 'right' }
+    );
 
     doc.save(`stock_list_${currentDate}.pdf`);
   };
+
   return (
     <div className="max-w-7xl mx-auto p-10 m-4 bg-gray-100 min-h-screen rounded-3xl">
       <h1 className="text-3xl md:text-4xl text-center mb-6">Stock List</h1>
@@ -149,13 +184,15 @@ const List = () => {
                           min="0"
                           value={
                             quantities[company.companyName]
-                              ? quantities[company.companyName][subItem] || ''
+                              ? quantities[company.companyName][
+                                  `${item.type}_${subItem}`
+                                ] || ''
                               : ''
                           }
                           onChange={(e) =>
                             handleQuantityChange(
                               company.companyName,
-                              subItem,
+                              `${item.type}_${subItem}`,
                               e
                             )
                           }
@@ -188,51 +225,3 @@ const List = () => {
 };
 
 export default List;
-
-const StockTable = ({ stock, quantities }) => {
-  return (
-    <div className="grid grid-cols-4 gap-4">
-      {stock.map((company, index) => (
-        <div key={index} className="mb-4">
-          <h3 className="font-bold text-lg">{company.companyName}</h3>
-          <table className="w-full">
-            <thead>
-              <tr>
-                <th className="text-left">Item</th>
-                <th className="text-right">Qty</th>
-              </tr>
-            </thead>
-            <tbody>
-              {company.items.map((item, idx) =>
-                typeof item === 'string' ? (
-                  <tr key={idx}>
-                    <td>{item}</td>
-                    <td className="text-right">
-                      {quantities[company.companyName]?.[item] || 0}
-                    </td>
-                  </tr>
-                ) : (
-                  <React.Fragment key={idx}>
-                    <tr>
-                      <td colSpan="2" className="font-bold">
-                        {item.type}
-                      </td>
-                    </tr>
-                    {item.list.map((subItem, subIdx) => (
-                      <tr key={subIdx}>
-                        <td>{subItem}</td>
-                        <td className="text-right">
-                          {quantities[company.companyName]?.[subItem] || 0}
-                        </td>
-                      </tr>
-                    ))}
-                  </React.Fragment>
-                )
-              )}
-            </tbody>
-          </table>
-        </div>
-      ))}
-    </div>
-  );
-};

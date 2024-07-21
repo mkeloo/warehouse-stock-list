@@ -34,77 +34,7 @@ const List2 = () => {
       )
   );
 
-  const generatePDF = () => {
-    const doc = new jsPDF('p', 'pt', 'a4');
-    const currentDate = new Date().toLocaleDateString().replace(/\//g, '-');
-
-    const pageWidth = doc.internal.pageSize.getWidth();
-    const pageHeight = doc.internal.pageSize.getHeight();
-    const margin = 40;
-    const columnWidth = (pageWidth - 2 * margin) / 4;
-    const maxColumnHeight = pageHeight - 2 * margin;
-
-    let currentColumn = 0;
-    let startY = margin;
-
-    doc.setFontSize(16);
-    doc.text('Stock List', margin, 30);
-
-    filteredStock.forEach((company, index) => {
-      if (currentColumn === 0 && startY > margin) {
-        doc.addPage();
-        startY = margin;
-      }
-
-      const xPosition = margin + currentColumn * columnWidth;
-
-      doc.setFontSize(10);
-      doc.setFont('helvetica', 'bold');
-      doc.text(company.companyName, xPosition, startY);
-
-      let rows = [];
-      company.items.forEach((item) => {
-        if (typeof item === 'string') {
-          const quantity = quantities[company.companyName]?.[item] || 0;
-          rows.push([item, quantity]);
-        } else {
-          rows.push([item.type, '']);
-          item.list.forEach((subItem) => {
-            const quantity = quantities[company.companyName]?.[subItem] || 0;
-            rows.push([subItem, quantity]);
-          });
-        }
-      });
-
-      const tableHeight = doc.autoTable.previous.finalY - startY;
-
-      doc.autoTable({
-        head: [['Item', 'Qty']],
-        body: rows,
-        startY: startY + 15,
-        margin: { left: xPosition },
-        tableWidth: columnWidth - 10,
-        styles: { fontSize: 8, cellPadding: 1 },
-        theme: 'grid',
-        columnStyles: {
-          0: { cellWidth: 'auto' },
-          1: { cellWidth: 30 },
-        },
-      });
-
-      currentColumn++;
-      if (currentColumn === 4) {
-        currentColumn = 0;
-        startY += Math.max(tableHeight, maxColumnHeight);
-        if (startY + maxColumnHeight > pageHeight - margin) {
-          doc.addPage();
-          startY = margin;
-        }
-      }
-    });
-
-    doc.save(`stock_list_${currentDate}.pdf`);
-  };
+  const generatePDF = () => {};
 
   return (
     <div className="max-w-7xl mx-auto p-10 m-4 bg-gray-100 min-h-screen rounded-3xl">
@@ -196,3 +126,71 @@ const List2 = () => {
 };
 
 export default List2;
+
+// const generatePDF = () => {
+//   const doc = new jsPDF('landscape', 'pt', 'a4');
+//   const currentDate = new Date().toLocaleDateString().replace(/\//g, '-');
+//   const pageWidth = doc.internal.pageSize.getWidth();
+//   const margin = 40;
+//   const columnWidth = (pageWidth - 2 * margin) / 4;
+//   let pageCount = 0;
+
+//   const addCompanyToPage = (company, xPosition, yPosition) => {
+//     let rows = [
+//       [
+//         {
+//           content: company.companyName,
+//           colSpan: 2,
+//           styles: { fontStyle: 'bold', fillColor: [200, 220, 210] },
+//         },
+//       ],
+//     ];
+
+//     company.items.forEach((item) => {
+//       if (typeof item === 'string') {
+//         const quantity = quantities[company.companyName]?.[item] || 0;
+//         rows.push([item, quantity]);
+//       } else {
+//         rows.push([
+//           { content: item.type, colSpan: 2, styles: { fontStyle: 'bold' } },
+//         ]);
+//         item.list.forEach((subItem) => {
+//           const quantity = quantities[company.companyName]?.[subItem] || 0;
+//           rows.push([subItem, quantity]);
+//         });
+//       }
+//     });
+
+//     doc.autoTable({
+//       startY: yPosition,
+//       margin: { left: xPosition },
+//       body: rows,
+//       tableWidth: columnWidth - 10,
+//       styles: { fontSize: 8, cellPadding: 2 },
+//       headStyles: { fillColor: [200, 220, 210] },
+//       columnStyles: {
+//         0: { cellWidth: 'auto' },
+//         1: { cellWidth: 30, halign: 'right' },
+//       },
+//     });
+//   };
+
+//   filteredStock.forEach((company, index) => {
+//     const col = index % 4;
+//     const row = Math.floor(index / 4) % 2;
+//     const xPosition = margin + col * columnWidth;
+//     const yPosition =
+//       margin + row * (doc.internal.pageSize.getHeight() / 2) + 60;
+
+//     if (index % 8 === 0 && index > 0) {
+//       doc.addPage();
+//       pageCount++;
+//     }
+
+//     addCompanyToPage(company, xPosition, yPosition);
+//   });
+
+//   doc.setFontSize(16);
+//   doc.text('Stock List', 40, 40);
+//   doc.save(`stock_list_${currentDate}.pdf`);
+// };
