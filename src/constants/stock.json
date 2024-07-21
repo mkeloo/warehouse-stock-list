@@ -330,52 +330,6 @@
     {
       "companyName": "OPTIMO",
       "items": ["SILVER", "DIAMOND", "SWEET", "GREEN", "BLUE"]
-    },
-    {
-      "companyName": "PHILLIES 55 CT",
-      "items": ["ORIGINAL", "CHOCOLATE"]
-    },
-    {
-      "companyName": "PRINGLES 5 OZ",
-      "items": [
-        "ORIGINAL",
-        "SALT N VINEG",
-        "RANCH",
-        "CHEDDAR CHES",
-        "SOUR CREAM",
-        "BBQ",
-        "PIZZA",
-        "DILL PICKLE",
-        "HONEY MUSTAR",
-        "ROTI CHICHEN",
-        "ROST GARLIC",
-        "BUFFALO RANC",
-        "SCORCHIN BBQ"
-      ]
-    },
-    {
-      "companyName": "CHEEZ IT",
-      "items": ["XTRA CHEESE", "PEPPER JACK", "WHITE CHEDAR", "ORIGINAL"]
-    },
-    {
-      "companyName": "PET FOOD ITEMS",
-      "items": ["DOG FOOD BAGS", "MEOW MIX"]
-    },
-    {
-      "companyName": "HERSHEYS",
-      "items": ["POPPED SNACK", "PRETZELS DIPPED", "COOKIE CREAM"]
-    },
-    {
-      "companyName": "REESES",
-      "items": ["POPPED SNACKS", "PRETZELS DIPPED"]
-    },
-    {
-      "companyName": "PEANUT BIG",
-      "items": ["ORIGINAL", "CAJUN"]
-    },
-    {
-      "companyName": "CUPS N LIDS",
-      "items": ["32 oz cups", "32 oz lids", "16 oz cups", "16 oz lids"]
     }
   ]
 }

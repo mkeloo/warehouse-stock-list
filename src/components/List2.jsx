@@ -3,7 +3,7 @@ import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import { STOCK } from '../constants/stock.json';
 
-const List = () => {
+const List2 = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [quantities, setQuantities] = useState({});
 
@@ -35,46 +35,40 @@ const List = () => {
   );
 
   const generatePDF = () => {
-    const doc = new jsPDF('l', 'pt', 'a4');
+    const doc = new jsPDF('p', 'pt', 'a4');
     const currentDate = new Date().toLocaleDateString().replace(/\//g, '-');
-
-    doc.setFontSize(16);
-    doc.text('Stock List', 40, 40);
 
     const pageWidth = doc.internal.pageSize.getWidth();
     const pageHeight = doc.internal.pageSize.getHeight();
     const margin = 40;
     const columnWidth = (pageWidth - 2 * margin) / 4;
+    const maxColumnHeight = pageHeight - 2 * margin;
+
+    let currentColumn = 0;
+    let startY = margin;
+
+    doc.setFontSize(16);
+    doc.text('Stock List', margin, 30);
 
     filteredStock.forEach((company, index) => {
-      const col = index % 4;
-      const row = Math.floor(index / 4);
-      const xPosition = margin + col * columnWidth;
-      let yPosition = margin + row * (pageHeight / 2) + 60;
-
-      if (row > 0 && col === 0) {
+      if (currentColumn === 0 && startY > margin) {
         doc.addPage();
-        yPosition = margin + 60;
+        startY = margin;
       }
 
-      let rows = [
-        [
-          {
-            content: company.companyName,
-            colSpan: 2,
-            styles: { fontStyle: 'bold', fillColor: [200, 220, 210] },
-          },
-        ],
-      ];
+      const xPosition = margin + currentColumn * columnWidth;
 
+      doc.setFontSize(10);
+      doc.setFont('helvetica', 'bold');
+      doc.text(company.companyName, xPosition, startY);
+
+      let rows = [];
       company.items.forEach((item) => {
         if (typeof item === 'string') {
           const quantity = quantities[company.companyName]?.[item] || 0;
           rows.push([item, quantity]);
         } else {
-          rows.push([
-            { content: item.type, colSpan: 2, styles: { fontStyle: 'bold' } },
-          ]);
+          rows.push([item.type, '']);
           item.list.forEach((subItem) => {
             const quantity = quantities[company.companyName]?.[subItem] || 0;
             rows.push([subItem, quantity]);
@@ -82,22 +76,36 @@ const List = () => {
         }
       });
 
+      const tableHeight = doc.autoTable.previous.finalY - startY;
+
       doc.autoTable({
-        startY: yPosition,
-        margin: { left: xPosition },
+        head: [['Item', 'Qty']],
         body: rows,
+        startY: startY + 15,
+        margin: { left: xPosition },
         tableWidth: columnWidth - 10,
-        styles: { fontSize: 8, cellPadding: 2 },
-        headStyles: { fillColor: [200, 220, 210] },
+        styles: { fontSize: 8, cellPadding: 1 },
+        theme: 'grid',
         columnStyles: {
           0: { cellWidth: 'auto' },
-          1: { cellWidth: 30, halign: 'right' },
+          1: { cellWidth: 30 },
         },
       });
+
+      currentColumn++;
+      if (currentColumn === 4) {
+        currentColumn = 0;
+        startY += Math.max(tableHeight, maxColumnHeight);
+        if (startY + maxColumnHeight > pageHeight - margin) {
+          doc.addPage();
+          startY = margin;
+        }
+      }
     });
 
     doc.save(`stock_list_${currentDate}.pdf`);
   };
+
   return (
     <div className="max-w-7xl mx-auto p-10 m-4 bg-gray-100 min-h-screen rounded-3xl">
       <h1 className="text-3xl md:text-4xl text-center mb-6">Stock List</h1>
@@ -187,52 +195,4 @@ const List = () => {
   );
 };
 
-export default List;
-
-const StockTable = ({ stock, quantities }) => {
-  return (
-    <div className="grid grid-cols-4 gap-4">
-      {stock.map((company, index) => (
-        <div key={index} className="mb-4">
-          <h3 className="font-bold text-lg">{company.companyName}</h3>
-          <table className="w-full">
-            <thead>
-              <tr>
-                <th className="text-left">Item</th>
-                <th className="text-right">Qty</th>
-              </tr>
-            </thead>
-            <tbody>
-              {company.items.map((item, idx) =>
-                typeof item === 'string' ? (
-                  <tr key={idx}>
-                    <td>{item}</td>
-                    <td className="text-right">
-                      {quantities[company.companyName]?.[item] || 0}
-                    </td>
-                  </tr>
-                ) : (
-                  <React.Fragment key={idx}>
-                    <tr>
-                      <td colSpan="2" className="font-bold">
-                        {item.type}
-                      </td>
-                    </tr>
-                    {item.list.map((subItem, subIdx) => (
-                      <tr key={subIdx}>
-                        <td>{subItem}</td>
-                        <td className="text-right">
-                          {quantities[company.companyName]?.[subItem] || 0}
-                        </td>
-                      </tr>
-                    ))}
-                  </React.Fragment>
-                )
-              )}
-            </tbody>
-          </table>
-        </div>
-      ))}
-    </div>
-  );
-};
+export default List2;
