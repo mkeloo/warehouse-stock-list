@@ -303,42 +303,52 @@
       ]
     },
     {
-      "companyName": "VUSE",
+      "companyName": "VUSE 1pk",
       "items": [
         {
-          "type": "1 PK 1.8%",
+          "type": "1pk  1.8%",
           "list": ["MENTOL", "GOLDEN TABACCO", "RICH TABACCO"]
         },
         {
-          "type": "1 pk 2.4%",
+          "type": "1pk  2.4%",
           "list": ["MENTOL", "GOLDEN TABACCO", "RICH TABACCO"]
         },
         {
-          "type": "1 PK 5%",
+          "type": "1pk  5%",
+          "list": ["MENTOL", "GOLDEN TABACCO", "RICH TABACCO"]
+        }
+      ]
+    },
+    {
+      "companyName": "VUSE 2pk",
+      "items": [
+        {
+          "type": "2pk  1.8%",
           "list": ["MENTOL", "GOLDEN TABACCO", "RICH TABACCO"]
         },
         {
-          "type": "2pk 1.8%",
+          "type": "2pk  2.4%",
           "list": ["MENTOL", "GOLDEN TABACCO", "RICH TABACCO"]
         },
         {
-          "type": "2pk 2.4%",
+          "type": "2pk  5%",
+          "list": ["MENTOL", "GOLDEN TABACCO", "RICH TABACCO"]
+        }
+      ]
+    },
+    {
+      "companyName": "VUSE 4pk",
+      "items": [
+        {
+          "type": "4pk  1.8%",
           "list": ["MENTOL", "GOLDEN TABACCO", "RICH TABACCO"]
         },
         {
-          "type": "2pk 5%",
+          "type": "4pk  2.4%",
           "list": ["MENTOL", "GOLDEN TABACCO", "RICH TABACCO"]
         },
         {
-          "type": "4PK 1.8%",
-          "list": ["MENTOL", "GOLDEN TABACCO", "RICH TABACCO"]
-        },
-        {
-          "type": "4PK 2.4%",
-          "list": ["MENTOL", "GOLDEN TABACCO", "RICH TABACCO"]
-        },
-        {
-          "type": "4PK 5%",
+          "type": "4pk  5%",
           "list": ["MENTOL", "GOLDEN TABACCO", "RICH TABACCO"]
         }
       ]
