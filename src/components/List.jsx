@@ -171,7 +171,19 @@ const List = () => {
               addTextToPage(company.companyName, true);
               hasItems = true;
             }
-            addTextToPage(`${item} - ${quantity}`);
+            const itemText = `${item} - `;
+            const quantityText = `${quantity}`;
+
+            doc.setFontSize(10);
+            doc.setFont('helvetica', 'normal');
+            doc.text(itemText, xPosition, yPosition);
+
+            const textWidth = doc.getTextWidth(itemText);
+
+            doc.setFont('helvetica', 'bold');
+            doc.text(quantityText, xPosition + textWidth, yPosition);
+
+            yPosition += lineHeight;
           }
         } else {
           const filteredItems = item.list.filter(
@@ -187,7 +199,19 @@ const List = () => {
             filteredItems.forEach((subItem) => {
               const quantity =
                 quantities[company.companyName][`${item.type}_${subItem}`];
-              addTextToPage(`  ${subItem} - ${quantity}`);
+              const subItemText = `  ${subItem} - `;
+              const subQuantityText = `${quantity}`;
+
+              doc.setFontSize(10);
+              doc.setFont('helvetica', 'normal');
+              doc.text(subItemText, xPosition, yPosition);
+
+              const textWidth = doc.getTextWidth(subItemText);
+
+              doc.setFont('helvetica', 'bold');
+              doc.text(subQuantityText, xPosition + textWidth, yPosition);
+
+              yPosition += lineHeight;
             });
           }
         }
@@ -206,6 +230,7 @@ const List = () => {
 
     doc.save(`stock_list_${currentDate}.pdf`);
   };
+
   return (
     <div className="max-w-7xl mx-auto p-4 sm:p-6 md:p-8 lg:p-10 m-2 sm:m-3 md:m-4 bg-gray-100 min-h-screen rounded-3xl">
       <h1 className="text-3xl md:text-4xl text-center mb-6">Stock List</h1>
@@ -271,29 +296,31 @@ const List = () => {
                     key={idx}
                     className="flex items-center justify-between mb-2"
                   >
-                    <span>{item}</span>
-                    <input
-                      type="number"
-                      min="0"
-                      value={
-                        quantities[company.companyName]
-                          ? quantities[company.companyName][item] || ''
-                          : ''
-                      }
-                      onChange={(e) =>
-                        handleQuantityChange(company.companyName, item, e)
-                      }
-                      className="border p-1 w-20"
-                      placeholder="Qty"
-                    />
-                    <button
-                      onClick={() =>
-                        handleDeleteItem(company.companyName, item)
-                      }
-                      className="ml-2  text-black p-1 rounded border-2 border-gray-300"
-                    >
-                      <X size={16} />
-                    </button>
+                    <span className="flex-grow mr-2">{item}</span>
+                    <div className="flex items-center">
+                      <input
+                        type="number"
+                        min="0"
+                        value={
+                          quantities[company.companyName]
+                            ? quantities[company.companyName][item] || ''
+                            : ''
+                        }
+                        onChange={(e) =>
+                          handleQuantityChange(company.companyName, item, e)
+                        }
+                        className="border p-1 w-16 text-right rounded-3xl"
+                        placeholder="Qty"
+                      />
+                      <button
+                        onClick={() =>
+                          handleDeleteItem(company.companyName, item)
+                        }
+                        className="ml-2 text-black p-1 rounded border-2 border-gray-300"
+                      >
+                        <X size={16} />
+                      </button>
+                    </div>
                   </div>
                 ) : (
                   <div key={idx}>
@@ -303,38 +330,40 @@ const List = () => {
                         key={subIdx}
                         className="flex items-center justify-between mb-2"
                       >
-                        <span>{subItem}</span>
-                        <input
-                          type="number"
-                          min="0"
-                          value={
-                            quantities[company.companyName]
-                              ? quantities[company.companyName][
-                                  `${item.type}_${subItem}`
-                                ] || ''
-                              : ''
-                          }
-                          onChange={(e) =>
-                            handleQuantityChange(
-                              company.companyName,
-                              `${item.type}_${subItem}`,
-                              e
-                            )
-                          }
-                          className="border p-1 w-20"
-                          placeholder="Qty"
-                        />
-                        <button
-                          onClick={() =>
-                            handleDeleteItem(
-                              company.companyName,
-                              `${item.type}_${subItem}`
-                            )
-                          }
-                          className="ml-2  text-black p-1 rounded border-2 border-gray-300"
-                        >
-                          <X size={16} />
-                        </button>
+                        <span className="flex-grow mr-2">{subItem}</span>
+                        <div className="flex items-center ">
+                          <input
+                            type="number"
+                            min="0"
+                            value={
+                              quantities[company.companyName]
+                                ? quantities[company.companyName][
+                                    `${item.type}_${subItem}`
+                                  ] || ''
+                                : ''
+                            }
+                            onChange={(e) =>
+                              handleQuantityChange(
+                                company.companyName,
+                                `${item.type}_${subItem}`,
+                                e
+                              )
+                            }
+                            className="border p-1 w-16 text-right rounded-xl"
+                            placeholder="Qty"
+                          />
+                          <button
+                            onClick={() =>
+                              handleDeleteItem(
+                                company.companyName,
+                                `${item.type}_${subItem}`
+                              )
+                            }
+                            className="ml-2 text-black p-1 rounded border-2 border-gray-300"
+                          >
+                            <X size={16} />
+                          </button>
+                        </div>
                       </div>
                     ))}
                   </div>
